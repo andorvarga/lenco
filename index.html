@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lenco Bricks Pavers Logistics - Supplying WA Since 1946</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --lenco-green: #0d5a2b;
+            --lenco-black: #0a0a0a;
+            --lenco-white: #fafafa;
+            --lenco-gray: #e0e0e0;
+            --lenco-dark-gray: #2a2a2a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Text', serif;
+            background: var(--lenco-white);
+            color: var(--lenco-black);
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 4rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid var(--lenco-green);
+            transition: all 0.3s ease;
+        }
+
+        header.scrolled {
+            padding: 0.5rem 4rem;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-container img {
+            height: 60px;
+            transition: height 0.3s ease;
+        }
+
+        header.scrolled .logo-container img {
+            height: 45px;
+        }
+
+        .header-contact {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 0.25rem;
+        }
+
+        .header-contact a {
+            color: var(--lenco-white);
+            text-decoration: none;
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+            transition: color 0.3s ease;
+        }
+
+        .header-contact a:hover {
+            color: var(--lenco-green);
+        }
+
+        .header-contact .phone {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--lenco-green);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(10, 10, 10, 0.4), rgba(10, 10, 10, 0.5)), url('22222222.png') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            margin-top: 80px;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: repeating-linear-gradient(
+                0deg,
+                transparent,
+                transparent 2px,
+                rgba(10, 10, 10, 0.03) 2px,
+                rgba(10, 10, 10, 0.03) 4px
+            );
+            pointer-events: none;
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            text-align: center;
+            color: var(--lenco-white);
+            z-index: 10;
+            animation: fadeInUp 1.2s ease-out;
+        }
+
+        .hero-content h1 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 6rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 8px;
+            margin-bottom: 1rem;
+            line-height: 1;
+            text-shadow: 4px 4px 20px rgba(0, 0, 0, 0.8);
+        }
+
+        .hero-content .green-accent {
+            color: var(--lenco-green);
+            display: block;
+            font-size: 7rem;
+            margin-top: 0.5rem;
+        }
+
+        .hero-content p {
+            font-size: 1.8rem;
+            font-style: italic;
+            letter-spacing: 2px;
+            margin-bottom: 2rem;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.8);
+        }
+
+        .hero-content .tagline {
+            font-size: 1.3rem;
+            font-weight: 600;
+            letter-spacing: 3px;
+            opacity: 0.9;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 3rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--lenco-white);
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            animation: bounce 2s infinite;
+        }
+
+        .scroll-indicator::after {
+            content: '';
+            width: 2px;
+            height: 40px;
+            background: linear-gradient(to bottom, var(--lenco-green), transparent);
+        }
+
+        /* Products Section */
+        .products {
+            padding: 8rem 4rem;
+            background: var(--lenco-black);
+            position: relative;
+        }
+
+        .products::before {
+            content: 'SINCE 1946';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: 'Oswald', sans-serif;
+            font-size: 18rem;
+            font-weight: 700;
+            color: rgba(13, 90, 43, 0.03);
+            letter-spacing: 20px;
+            pointer-events: none;
+            white-space: nowrap;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 5rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .section-header h2 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 4rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 6px;
+            color: var(--lenco-white);
+            margin-bottom: 1rem;
+        }
+
+        .section-header p {
+            font-size: 1.4rem;
+            color: var(--lenco-gray);
+            font-style: italic;
+            letter-spacing: 1px;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .product-card {
+            background: var(--lenco-dark-gray);
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+            transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .product-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, var(--lenco-green) 0%, transparent 100%);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            z-index: 2;
+        }
+
+        .product-card:hover::before {
+            opacity: 0.3;
+        }
+
+        .product-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            transition: transform 0.7s ease;
+        }
+
+        .product-card:hover .product-image {
+            transform: scale(1.1);
+        }
+
+        .product-info {
+            padding: 2.5rem;
+            position: relative;
+            z-index: 3;
+        }
+
+        .product-info h3 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            color: var(--lenco-white);
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+        .product-info h3::after {
+            content: '';
+            position: absolute;
+            bottom: -0.5rem;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: var(--lenco-green);
+            transition: width 0.4s ease;
+        }
+
+        .product-card:hover .product-info h3::after {
+            width: 100%;
+        }
+
+        .product-info p {
+            font-size: 1.1rem;
+            color: var(--lenco-gray);
+            line-height: 1.6;
+            letter-spacing: 0.5px;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 8rem 4rem;
+            background: var(--lenco-white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--lenco-green), var(--lenco-black), var(--lenco-green));
+        }
+
+        .contact-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6rem;
+            align-items: center;
+        }
+
+        .contact-info h2 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 4rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 6px;
+            color: var(--lenco-black);
+            margin-bottom: 2rem;
+            line-height: 1.2;
+        }
+
+        .contact-info .green-text {
+            color: var(--lenco-green);
+        }
+
+        .contact-info p {
+            font-size: 1.3rem;
+            color: var(--lenco-dark-gray);
+            margin-bottom: 3rem;
+            line-height: 1.8;
+        }
+
+        .contact-details {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            padding: 1.5rem;
+            background: var(--lenco-black);
+            border-left: 4px solid var(--lenco-green);
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            transform: translateX(10px);
+            border-left-width: 8px;
+        }
+
+        .contact-item-label {
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--lenco-green);
+            min-width: 80px;
+        }
+
+        .contact-item-value {
+            font-size: 1.2rem;
+            color: var(--lenco-white);
+            letter-spacing: 0.5px;
+        }
+
+        .contact-item-value a {
+            color: var(--lenco-white);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-item-value a:hover {
+            color: var(--lenco-green);
+        }
+
+        .contact-form {
+            background: var(--lenco-dark-gray);
+            padding: 3rem;
+            border: 2px solid var(--lenco-green);
+        }
+
+        .form-group {
+            margin-bottom: 2rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--lenco-green);
+            margin-bottom: 0.5rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            background: var(--lenco-black);
+            border: 1px solid rgba(13, 90, 43, 0.3);
+            color: var(--lenco-white);
+            font-family: 'Crimson Text', serif;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--lenco-green);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 1.5rem;
+            background: var(--lenco-green);
+            color: var(--lenco-white);
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .submit-btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: var(--lenco-black);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.6s ease, height 0.6s ease;
+        }
+
+        .submit-btn:hover::before {
+            width: 400px;
+            height: 400px;
+        }
+
+        .submit-btn span {
+            position: relative;
+            z-index: 1;
+        }
+
+        .submit-btn:hover {
+            border: 2px solid var(--lenco-green);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--lenco-black);
+            padding: 3rem 4rem;
+            text-align: center;
+            border-top: 4px solid var(--lenco-green);
+        }
+
+        footer p {
+            color: var(--lenco-gray);
+            font-size: 1rem;
+            letter-spacing: 1px;
+        }
+
+        footer .heritage {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--lenco-green);
+            margin-top: 1rem;
+            letter-spacing: 4px;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateX(-50%) translateY(0);
+            }
+            50% {
+                transform: translateX(-50%) translateY(-10px);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .hero-content h1 {
+                font-size: 4.5rem;
+            }
+
+            .hero-content .green-accent {
+                font-size: 5rem;
+            }
+
+            .products::before {
+                font-size: 12rem;
+            }
+        }
+
+        @media (max-width: 968px) {
+            header {
+                padding: 1rem 2rem;
+            }
+
+            .products-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .contact-container {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .hero-content h1 {
+                font-size: 3rem;
+            }
+
+            .hero-content .green-accent {
+                font-size: 3.5rem;
+            }
+
+            .products::before {
+                font-size: 6rem;
+            }
+        }
+
+        @media (max-width: 640px) {
+            header {
+                flex-direction: column;
+                gap: 1rem;
+                padding: 1rem;
+            }
+
+            .header-contact {
+                align-items: center;
+            }
+
+            .hero-content h1 {
+                font-size: 2rem;
+                letter-spacing: 4px;
+            }
+
+            .hero-content .green-accent {
+                font-size: 2.5rem;
+            }
+
+            .hero-content p {
+                font-size: 1.2rem;
+            }
+
+            .section-header h2 {
+                font-size: 2.5rem;
+            }
+
+            .products,
+            .contact {
+                padding: 4rem 1.5rem;
+            }
+
+            .contact-info h2 {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header id="header">
+        <div class="logo-container">
+            <img src="Lenco Logo.png" alt="Lenco Bricks Pavers Logistics">
+        </div>
+        <div class="header-contact">
+            <a href="mailto:brayden@lencobricks.com.au">brayden@lencobricks.com.au</a>
+            <a href="tel:0466616860" class="phone">0466 616 860</a>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>
+                SUPPLYING
+                <span class="green-accent">WESTERN AUSTRALIA</span>
+            </h1>
+            <p>Brick importers, wholesalers, and transport services</p>
+            <div class="tagline">SERVING THE INDUSTRY SINCE 1946</div>
+        </div>
+        <div class="scroll-indicator">
+            EXPLORE
+        </div>
+    </section>
+
+    <section class="products">
+        <div class="section-header">
+            <h2>Our Products</h2>
+            <p>Premium bricks for every architectural vision</p>
+        </div>
+        <div class="products-grid">
+            <div class="product-card">
+                <img src="333333333333333.png" alt="Decorative Bricks" class="product-image">
+                <div class="product-info">
+                    <h3>Decorative Bricks</h3>
+                    <p>Architectural bricks that make a statement. From traditional to contemporary, our decorative range brings character and elegance to any project.</p>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="Downpipe-Maxi-768x555-1-300x217.png" alt="Utility Bricks" class="product-image">
+                <div class="product-info">
+                    <h3>Utility Bricks</h3>
+                    <p>Reliable, durable building solutions. Our utility bricks provide the structural integrity and performance that Western Australian builders trust.</p>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="a0dbd8_70151d5cf9bd48a38df11c7de22a225f~mv2.jpg" alt="Reclaimed Bricks" class="product-image">
+                <div class="product-info">
+                    <h3>Reclaimed Bricks</h3>
+                    <p>Sustainable beauty with history. Reclaimed bricks add authentic character while supporting environmentally conscious construction practices.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact">
+        <div class="contact-container">
+            <div class="contact-info">
+                <h2>
+                    LET'S BUILD<br>
+                    <span class="green-text">TOGETHER</span>
+                </h2>
+                <p>Whether you're an architect, builder, or developer, we're here to supply the premium bricks that bring your vision to life. Get in touch with our team today.</p>
+
+                <div class="contact-details">
+                    <div class="contact-item">
+                        <span class="contact-item-label">Email</span>
+                        <span class="contact-item-value">
+                            <a href="mailto:brayden@lencobricks.com.au">brayden@lencobricks.com.au</a>
+                        </span>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-item-label">Mobile</span>
+                        <span class="contact-item-value">
+                            <a href="tel:0466616860">0466 616 860</a>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contact-form">
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone</label>
+                        <input type="tel" id="phone" name="phone">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">
+                        <span>Send Enquiry</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Lenco Bricks Pavers Logistics. All rights reserved.</p>
+        <p class="heritage">SUPPLYING WESTERN AUSTRALIA SINCE 1946</p>
+    </footer>
+
+    <script>
+        // Header scroll effect
+        const header = document.getElementById('header');
+        let lastScroll = 0;
+
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+
+            if (currentScroll > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+
+            lastScroll = currentScroll;
+        });
+
+        // Smooth scroll for scroll indicator
+        document.querySelector('.scroll-indicator').addEventListener('click', () => {
+            document.querySelector('.products').scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+
+        // Form submission
+        document.getElementById('contactForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Thank you for your enquiry! We will be in touch soon.');
+            e.target.reset();
+        });
+
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe product cards
+        document.querySelectorAll('.product-card').forEach((card, index) => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(50px)';
+            card.style.transition = `opacity 0.8s ease ${index * 0.2}s, transform 0.8s ease ${index * 0.2}s`;
+            observer.observe(card);
+        });
+
+        // Parallax effect for hero
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.hero');
+            if (hero && scrolled < window.innerHeight) {
+                hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+            }
+        });
+    </script>
+</body>
+</html>
